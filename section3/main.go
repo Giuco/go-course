@@ -9,9 +9,8 @@ func main() {
 	rand.Seed(time.Now().UnixNano())
 	cards := newDeck()
 	cards.shuffle()
-	cards.print()
-	cards, hand := cards.drawHand(5)
+	_, hand := drawHand(cards, 5)
 	hand.saveToFile("hand.txt")
-	new_hand := readDeckFromFile("hand.txt")
-	new_hand.print()
+	loadedHand := readDeckFromFile("hand.txt")
+	loadedHand.print()
 }

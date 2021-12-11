@@ -32,7 +32,7 @@ func (d deck) print() {
 	}
 }
 
-func (d deck) drawHand(handSize int) (deck, deck) {
+func drawHand(d deck, handSize int) (deck, deck) {
 	return d[handSize:], d[:handSize]
 }
 

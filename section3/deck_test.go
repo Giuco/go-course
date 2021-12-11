@@ -1,6 +1,9 @@
 package main
 
-import "testing"
+import (
+	"os"
+	"testing"
+)
 
 func TestNewDeck(t *testing.T) {
 	d := newDeck()
@@ -17,4 +20,25 @@ func TestNewDeck(t *testing.T) {
 	if d[len(d)-1] != "King of Clubs" {
 		t.Errorf("Expected last card to be 'King of Clubs', go %v", d[len(d)-1])
 	}
+}
+
+func TestSaveAndReadDeckFromFile(t *testing.T) {
+	os.Remove("_decktesting")
+
+	deck := newDeck()
+	deck.saveToFile("_decktesting")
+
+	loadedDeck := readDeckFromFile("_decktesting")
+
+	if len(deck) != len(loadedDeck) {
+		t.Errorf("Both sizes should be equal. deck=%v. loadedDeck=%v", len(deck), len(loadedDeck))
+	}
+
+	for i := range deck {
+		if deck[i] != loadedDeck[i] {
+			t.Errorf("Deck are diffent at index %v. deck=%v. loadedDeck=%v", i, len(deck), len(loadedDeck))
+		}
+	}
+
+	os.Remove("_decktesting")
 }
