@@ -4,6 +4,12 @@ import (
 	"fmt"
 )
 
+func printMap(c map[string]string) {
+	for k, v := range c {
+		fmt.Printf("Key: %v, Value: %v\n", k, v)
+	}
+}
+
 func main() {
 	// var colors map[string]string
 
@@ -15,6 +21,8 @@ func main() {
 	}
 
 	fmt.Println(colors)
+
+	printMap(colors)
 
 	colors["white"] = "#FFFFFF"
 	fmt.Println(colors)
