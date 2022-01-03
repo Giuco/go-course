@@ -12,5 +12,8 @@ func main() {
 		fmt.Println("Error: ", err)
 		os.Exit(1)
 	}
-	fmt.Println(resp)
+
+	bs := make([]byte, 999999)
+	resp.Body.Read(bs)
+	fmt.Println(string(bs))
 }
