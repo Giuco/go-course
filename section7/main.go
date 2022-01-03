@@ -20,7 +20,10 @@ func main() {
 		go checkURL(url, c)
 	}
 
-	fmt.Println(<-c)
+	for i := 0; i < len(urls); i++ {
+		fmt.Println(<-c)
+	}
+
 }
 
 func checkURL(url string, c chan string) {
