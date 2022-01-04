@@ -21,11 +21,11 @@ func main() {
 		go checkURL(url, c)
 	}
 
-	for url := range c {
-		go func() {
+	for u := range c {
+		go func(url string) {
 			time.Sleep(time.Second * 5)
 			checkURL(url, c)
-		}()
+		}(u)
 	}
 
 }
