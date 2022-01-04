@@ -3,6 +3,7 @@ package main
 import (
 	"fmt"
 	"net/http"
+	"time"
 )
 
 func main() {
@@ -21,7 +22,10 @@ func main() {
 	}
 
 	for url := range c {
-		go checkURL(url, c)
+		go func() {
+			time.Sleep(time.Second * 5)
+			checkURL(url, c)
+		}()
 	}
 
 }
